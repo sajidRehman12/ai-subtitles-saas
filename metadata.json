@@ -1,0 +1,6 @@
+{
+  "name": "SubFlow AI - Video Subtitle & Caption Studio SaaS",
+  "description": "Enterprise-grade AI SaaS for generating, editing, and translating animated video subtitles and multi-format caption tracks.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,11 +1,52 @@
-<div align="center">
+# SubFlow AI — Video Subtitle & Caption Studio SaaS
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+A production-ready 8-page SaaS web application for generating, styling, synchronizing, and translating animated video subtitles.
 
-  <h1>Built with AI Studio</h2>
+## Deploying to Vercel
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+This repository is pre-configured with `vercel.json` for instant deployment on [Vercel](https://vercel.com).
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+### Method 1: Deploy with Git (Recommended)
 
-</div>
+1. Push your repository to **GitHub**, **GitLab**, or **Bitbucket**.
+2. Go to [vercel.com/new](https://vercel.com/new) and log in.
+3. Select your repository and click **Import**.
+4. Vercel will auto-detect the configuration:
+   - **Framework Preset**: Vite
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+   - **Install Command**: `npm install`
+5. Click **Deploy**. Your app will be live on a `*.vercel.app` domain in seconds!
+
+### Method 2: Deploy with Vercel CLI
+
+From your local project terminal:
+
+```bash
+# Install Vercel CLI if you haven't already
+npm i -g vercel
+
+# Run deployment
+vercel
+```
+
+Follow the interactive prompts (defaults are pre-configured in `vercel.json`). For production deployment:
+
+```bash
+vercel --prod
+```
+
+---
+
+### Local Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start local development server
+npm run dev
+
+# Create production build
+npm run build
+```

@@ -13,9 +13,9 @@ This repository is pre-configured with `vercel.json` for instant deployment on [
 3. Select your repository and click **Import**.
 4. Vercel will auto-detect the configuration:
    - **Framework Preset**: Vite
+   - **Install Command**: `npm install --legacy-peer-deps` (automatically configured via `.npmrc` & `vercel.json`)
    - **Build Command**: `npm run build`
    - **Output Directory**: `dist`
-   - **Install Command**: `npm install`
 5. Click **Deploy**. Your app will be live on a `*.vercel.app` domain in seconds!
 
 ### Method 2: Deploy with Vercel CLI

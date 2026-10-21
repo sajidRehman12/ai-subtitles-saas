@@ -1,194 +1,235 @@
 import React from 'react';
-import { PageId } from '../types';
-import { Sparkles, Layers, Wand2, Languages, BarChart3, CreditCard, Settings, Video } from 'lucide-react';
+import { 
+  Sparkles, Layers, Wand2, Languages, BarChart3, 
+  CreditCard, Settings, Video, Home 
+} from 'lucide-react';
 
 interface NavbarProps {
-  currentPage: PageId;
-  onSelectPage: (page: PageId) => void;
-  onNewUpload: () => void;
+  currentPath: string;
+  onNavigate: (path: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ currentPage, onSelectPage, onNewUpload }) => {
+export const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
   return (
     <>
-      {/* Strict Top Bar Contract: 3 zones, 1 line */}
-      <header className="flex items-center justify-between gap-8 px-6 py-3.5 border-b border-slate-800/80 bg-slate-950/95 backdrop-blur sticky top-0 z-50">
+      {/* Top Navigation Bar: Pure Black Elegance */}
+      <header className="flex items-center justify-between gap-8 px-6 py-3.5 border-b border-neutral-900 bg-black/95 backdrop-blur sticky top-0 z-50">
         {/* Zone 1: Single text element wordmark */}
         <button
-          onClick={() => onSelectPage('studio')}
-          className="text-lg font-bold tracking-tight text-white hover:text-indigo-400 transition-colors whitespace-nowrap shrink-0 text-left flex items-center gap-2"
+          onClick={() => onNavigate('/')}
+          className="text-base font-bold tracking-tight text-white hover:text-neutral-300 transition-colors whitespace-nowrap shrink-0 text-left flex items-center gap-2.5"
         >
-          <span className="w-6 h-6 rounded bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-xs font-black text-white">
-            SF
+          <span className="w-6 h-6 rounded bg-neutral-900 border border-neutral-750 flex items-center justify-center text-xs font-bold text-white">
+            S
           </span>
-          <span>SubFlow AI</span>
+          <span className="tracking-tight">SubFlow</span>
         </button>
 
-        {/* Zone 2: Concise single-line text navigation links */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
-          <button
-            onClick={() => onSelectPage('studio')}
-            className={`transition-colors whitespace-nowrap shrink-0 ${
-              currentPage === 'studio' ? 'text-white font-semibold underline underline-offset-8 decoration-indigo-500 decoration-2' : 'hover:text-white'
-            }`}
-          >
-            Studio
-          </button>
-          <button
-            onClick={() => onSelectPage('dashboard')}
-            className={`transition-colors whitespace-nowrap shrink-0 ${
-              currentPage === 'dashboard' ? 'text-white font-semibold underline underline-offset-8 decoration-indigo-500 decoration-2' : 'hover:text-white'
-            }`}
-          >
-            Projects
-          </button>
-          <button
-            onClick={() => onSelectPage('batch')}
-            className={`transition-colors whitespace-nowrap shrink-0 ${
-              currentPage === 'batch' ? 'text-white font-semibold underline underline-offset-8 decoration-indigo-500 decoration-2' : 'hover:text-white'
-            }`}
-          >
-            Batch
-          </button>
-          <button
-            onClick={() => onSelectPage('templates')}
-            className={`transition-colors whitespace-nowrap shrink-0 ${
-              currentPage === 'templates' ? 'text-white font-semibold underline underline-offset-8 decoration-indigo-500 decoration-2' : 'hover:text-white'
-            }`}
-          >
-            Styles
-          </button>
-          <button
-            onClick={() => onSelectPage('translation')}
-            className={`transition-colors whitespace-nowrap shrink-0 ${
-              currentPage === 'translation' ? 'text-white font-semibold underline underline-offset-8 decoration-indigo-500 decoration-2' : 'hover:text-white'
-            }`}
-          >
-            Translate
-          </button>
-        </nav>
+        {/* Zone 2: Navigation links - hidden on home page per user instruction */}
+        {currentPath !== '/' && (
+          <nav className="hidden md:flex items-center gap-7 text-xs font-medium text-neutral-400 uppercase tracking-wider">
+            <button
+              onClick={() => onNavigate('/')}
+              className="text-neutral-400 hover:text-white transition-colors whitespace-nowrap shrink-0"
+            >
+              Overview
+            </button>
+            <button
+              onClick={() => onNavigate('/studio')}
+              className={`transition-colors whitespace-nowrap shrink-0 ${
+                currentPath === '/studio'
+                  ? 'text-white font-semibold underline underline-offset-8 decoration-white decoration-1'
+                  : 'hover:text-white'
+              }`}
+            >
+              Studio
+            </button>
+            <button
+              onClick={() => onNavigate('/dashboard')}
+              className={`transition-colors whitespace-nowrap shrink-0 ${
+                currentPath === '/dashboard'
+                  ? 'text-white font-semibold underline underline-offset-8 decoration-white decoration-1'
+                  : 'hover:text-white'
+              }`}
+            >
+              Projects
+            </button>
+            <button
+              onClick={() => onNavigate('/batch')}
+              className={`transition-colors whitespace-nowrap shrink-0 ${
+                currentPath === '/batch'
+                  ? 'text-white font-semibold underline underline-offset-8 decoration-white decoration-1'
+                  : 'hover:text-white'
+              }`}
+            >
+              Batch
+            </button>
+            <button
+              onClick={() => onNavigate('/styles')}
+              className={`transition-colors whitespace-nowrap shrink-0 ${
+                currentPath === '/styles'
+                  ? 'text-white font-semibold underline underline-offset-8 decoration-white decoration-1'
+                  : 'hover:text-white'
+              }`}
+            >
+              Styles
+            </button>
+            <button
+              onClick={() => onNavigate('/translate')}
+              className={`transition-colors whitespace-nowrap shrink-0 ${
+                currentPath === '/translate'
+                  ? 'text-white font-semibold underline underline-offset-8 decoration-white decoration-1'
+                  : 'hover:text-white'
+              }`}
+            >
+              Translate
+            </button>
+            <button
+              onClick={() => onNavigate('/pricing')}
+              className={`transition-colors whitespace-nowrap shrink-0 ${
+                currentPath === '/pricing'
+                  ? 'text-white font-semibold underline underline-offset-8 decoration-white decoration-1'
+                  : 'hover:text-white'
+              }`}
+            >
+              Pricing
+            </button>
+          </nav>
+        )}
 
-        {/* Zone 3: 1 primary action */}
+        {/* Zone 3: Only one option to enter the studio */}
         <div className="flex items-center gap-3 shrink-0">
           <button
-            onClick={onNewUpload}
-            className="px-4 py-2 text-xs font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-500 active:scale-[0.98] transition-all whitespace-nowrap shrink-0 shadow-sm shadow-indigo-500/20"
+            onClick={() => onNavigate('/studio')}
+            className="px-4 py-2 text-xs font-semibold text-black bg-white hover:bg-neutral-200 active:scale-[0.98] transition-all whitespace-nowrap shrink-0 rounded-md uppercase tracking-wider shadow-lg"
           >
-            New Subtitle
+            Enter Studio
           </button>
         </div>
       </header>
 
-      {/* Workspace Secondary Navigation Strip for all 8 SaaS modules */}
-      <div className="border-b border-slate-800/60 bg-slate-900/60 px-6 py-2">
+      {/* Secondary Navigation Strip: Only rendered on interior pages, hidden on home page */}
+      {currentPath !== '/' && (
+        <div className="border-b border-neutral-900 bg-neutral-950/80 px-6 py-2">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
           <div className="flex items-center gap-1.5 text-xs">
-            <span className="text-slate-400 font-medium mr-2 hidden sm:inline">Workspace Modules:</span>
-            
             <button
-              onClick={() => onSelectPage('studio')}
+              onClick={() => onNavigate('/')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md font-medium whitespace-nowrap transition-colors ${
-                currentPage === 'studio'
-                  ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                currentPath === '/'
+                  ? 'bg-neutral-900 text-white border border-neutral-800'
+                  : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
               }`}
             >
-              <Video className="w-3.5 h-3.5" />
-              <span>1. Generator Studio</span>
+              <Home className="w-3.5 h-3.5 text-neutral-400" />
+              <span>Overview</span>
             </button>
 
             <button
-              onClick={() => onSelectPage('dashboard')}
+              onClick={() => onNavigate('/studio')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md font-medium whitespace-nowrap transition-colors ${
-                currentPage === 'dashboard'
-                  ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                currentPath === '/studio'
+                  ? 'bg-neutral-900 text-white border border-neutral-800'
+                  : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
               }`}
             >
-              <Layers className="w-3.5 h-3.5" />
+              <Video className="w-3.5 h-3.5 text-neutral-400" />
+              <span>1. Studio</span>
+            </button>
+
+            <button
+              onClick={() => onNavigate('/dashboard')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md font-medium whitespace-nowrap transition-colors ${
+                currentPath === '/dashboard'
+                  ? 'bg-neutral-900 text-white border border-neutral-800'
+                  : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
+              }`}
+            >
+              <Layers className="w-3.5 h-3.5 text-neutral-400" />
               <span>2. Projects</span>
             </button>
 
             <button
-              onClick={() => onSelectPage('batch')}
+              onClick={() => onNavigate('/batch')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md font-medium whitespace-nowrap transition-colors ${
-                currentPage === 'batch'
-                  ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                currentPath === '/batch'
+                  ? 'bg-neutral-900 text-white border border-neutral-800'
+                  : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
               }`}
             >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>3. Batch Queue</span>
+              <Sparkles className="w-3.5 h-3.5 text-neutral-400" />
+              <span>3. Batch</span>
             </button>
 
             <button
-              onClick={() => onSelectPage('templates')}
+              onClick={() => onNavigate('/styles')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md font-medium whitespace-nowrap transition-colors ${
-                currentPage === 'templates'
-                  ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                currentPath === '/styles'
+                  ? 'bg-neutral-900 text-white border border-neutral-800'
+                  : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
               }`}
             >
-              <Wand2 className="w-3.5 h-3.5" />
-              <span>4. Styles Library</span>
+              <Wand2 className="w-3.5 h-3.5 text-neutral-400" />
+              <span>4. Styles</span>
             </button>
 
             <button
-              onClick={() => onSelectPage('translation')}
+              onClick={() => onNavigate('/translate')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md font-medium whitespace-nowrap transition-colors ${
-                currentPage === 'translation'
-                  ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                currentPath === '/translate'
+                  ? 'bg-neutral-900 text-white border border-neutral-800'
+                  : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
               }`}
             >
-              <Languages className="w-3.5 h-3.5" />
-              <span>5. AI Translate</span>
+              <Languages className="w-3.5 h-3.5 text-neutral-400" />
+              <span>5. Translate</span>
             </button>
 
             <button
-              onClick={() => onSelectPage('analytics')}
+              onClick={() => onNavigate('/analytics')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md font-medium whitespace-nowrap transition-colors ${
-                currentPage === 'analytics'
-                  ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                currentPath === '/analytics'
+                  ? 'bg-neutral-900 text-white border border-neutral-800'
+                  : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
               }`}
             >
-              <BarChart3 className="w-3.5 h-3.5" />
+              <BarChart3 className="w-3.5 h-3.5 text-neutral-400" />
               <span>6. Analytics</span>
             </button>
 
             <button
-              onClick={() => onSelectPage('pricing')}
+              onClick={() => onNavigate('/pricing')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md font-medium whitespace-nowrap transition-colors ${
-                currentPage === 'pricing'
-                  ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                currentPath === '/pricing'
+                  ? 'bg-neutral-900 text-white border border-neutral-800'
+                  : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
               }`}
             >
-              <CreditCard className="w-3.5 h-3.5" />
+              <CreditCard className="w-3.5 h-3.5 text-neutral-400" />
               <span>7. Plans</span>
             </button>
 
             <button
-              onClick={() => onSelectPage('settings')}
+              onClick={() => onNavigate('/settings')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md font-medium whitespace-nowrap transition-colors ${
-                currentPage === 'settings'
-                  ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                currentPath === '/settings'
+                  ? 'bg-neutral-900 text-white border border-neutral-800'
+                  : 'text-neutral-400 hover:text-white hover:bg-neutral-900/50'
               }`}
             >
-              <Settings className="w-3.5 h-3.5" />
+              <Settings className="w-3.5 h-3.5 text-neutral-400" />
               <span>8. Settings</span>
             </button>
           </div>
 
-          <div className="flex items-center gap-2 text-xs text-slate-400 shrink-0 tabular-nums">
-            <span>Model: Whisper-v3 DeepSync</span>
-            <span aria-hidden="true" className="text-slate-600">·</span>
-            <span className="text-emerald-400 font-medium">99.4% Accuracy</span>
+          <div className="flex items-center gap-2 text-xs text-neutral-500 shrink-0 tabular-nums font-mono">
+            <span>Whisper-v3 Sync</span>
+            <span aria-hidden="true" className="text-neutral-700">·</span>
+            <span className="text-neutral-300">99.4% Accuracy</span>
           </div>
         </div>
       </div>
+      )}
     </>
   );
 };

@@ -10,7 +10,7 @@ import {
 
 interface DashboardPageProps {
   onOpenProject: (project: VideoProject) => void;
-  onNavigate: (page: PageId) => void;
+  onNavigate: (path: string) => void;
 }
 
 export const DashboardPage: React.FC<DashboardPageProps> = ({ onOpenProject, onNavigate }) => {
@@ -90,7 +90,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onOpenProject, onN
 
         <div className="flex items-center gap-2">
           <button
-            onClick={() => onNavigate('batch')}
+            onClick={() => onNavigate('/batch')}
             className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-slate-300 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors border border-slate-700"
           >
             <Sparkles className="w-3.5 h-3.5 text-indigo-400" />

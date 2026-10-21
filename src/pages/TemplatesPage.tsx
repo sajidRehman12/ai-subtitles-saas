@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 
 interface TemplatesPageProps {
-  onNavigate: (page: PageId) => void;
+  onNavigate: (path: string) => void;
 }
 
 export const TemplatesPage: React.FC<TemplatesPageProps> = ({ onNavigate }) => {
@@ -84,7 +84,7 @@ export const TemplatesPage: React.FC<TemplatesPageProps> = ({ onNavigate }) => {
             <span>{copiedCode ? 'CSS Copied!' : 'Copy Preset CSS'}</span>
           </button>
           <button
-            onClick={() => onNavigate('studio')}
+            onClick={() => onNavigate('/studio')}
             className="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors shadow-sm shadow-indigo-600/30"
           >
             <span>Apply to Video Studio</span>

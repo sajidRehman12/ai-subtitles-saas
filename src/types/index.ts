@@ -60,12 +60,61 @@ export interface CustomTerm {
   category: 'brand' | 'acronym' | 'person' | 'jargon';
 }
 
+export interface BlogPost {
+  id: string;
+  slug: string;
+  title: string;
+  subtitle: string;
+  summary: string;
+  category: 'Guides' | 'Engineering' | 'Case Studies' | 'AI Speech' | 'Tutorials';
+  author: {
+    name: string;
+    role: string;
+    avatar: string;
+  };
+  readTime: string;
+  date: string;
+  coverImage: string;
+  featured?: boolean;
+  sections: {
+    heading: string;
+    body: string;
+    keyTakeaway?: string;
+  }[];
+}
+
+export interface AdSenseConfig {
+  publisherId: string;
+  enabled: boolean;
+  testMode: boolean;
+  autoAds: boolean;
+}
+
+export interface ActiveVideoData {
+  title: string;
+  videoUrl: string;
+  duration: number;
+  cues: SubtitleCue[];
+  stylePreset: CaptionPresetId;
+  language: string;
+  accuracy: number;
+}
+
 export type PageId = 
+  | 'home'
   | 'studio'
+  | 'ready'
+  | 'download'
   | 'dashboard'
   | 'batch'
   | 'templates'
   | 'translation'
   | 'analytics'
   | 'pricing'
-  | 'settings';
+  | 'settings'
+  | 'article'
+  | 'privacy'
+  | 'terms'
+  | 'adsense';
+
+
